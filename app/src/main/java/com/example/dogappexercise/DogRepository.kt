@@ -9,9 +9,9 @@ import com.example.dogappexercise.remote.RetrofitClient
 
 class DogRepository {
     private  val retrofitClient = RetrofitClient.getRetrofit()
-    private val dataFromInternet = MutableLiveData<List<DogBreeds>>()
+    val dataFromInternet = MutableLiveData<List<DogBreeds>>()
 
-    suspend fun fetchDataFromInternetCoroutines()  : LiveData<List<DogBreeds>> {
+    suspend fun fetchDataFromInternetCoroutines()   {
         try {
             val response = retrofitClient.fetchBreedsDataCoroutines()
             when (response.code()) {
@@ -22,6 +22,6 @@ class DogRepository {
         } catch (t: Throwable) {
             Log.e("REPO", "${t.message}")
         }
-        return dataFromInternet
+
     }
 }

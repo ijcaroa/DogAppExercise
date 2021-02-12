@@ -13,8 +13,6 @@ import com.example.dogappexercise.R
 import com.example.dogappexercise.databinding.FragmentFirstBinding
 import java.util.*
 
-
-
 class FirstFragment : Fragment() {
     private lateinit var binding : FragmentFirstBinding
     private val viewModel : DogViewModel by activityViewModels()
@@ -26,7 +24,6 @@ class FirstFragment : Fragment() {
        binding = FragmentFirstBinding.inflate(inflater,container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -34,10 +31,7 @@ class FirstFragment : Fragment() {
             it?.let {
                 binding.textviewFirst.text = it.toString()
             }
-
         })
-
-
         view.findViewById<Button>(R.id.button_first).setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }

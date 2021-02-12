@@ -10,14 +10,15 @@ import kotlinx.coroutines.launch
 class DogViewModel : ViewModel() {
 
     private val repository : DogRepository
-    lateinit var livedataFromInternet : LiveData<List<DogBreeds>>
+    val livedataFromInternet : LiveData<List<DogBreeds>>
 
 
     init {
         repository = DogRepository()
         viewModelScope.launch {
-            livedataFromInternet = repository.fetchDataFromInternetCoroutines()
+            repository.fetchDataFromInternetCoroutines()
         }
+        livedataFromInternet = repository.dataFromInternet
     }
 
 }
